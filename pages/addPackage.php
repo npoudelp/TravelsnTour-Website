@@ -62,14 +62,14 @@ if ($_SESSION['logged'] != 'true') {
                 <div class="row border border-red">
                     <div class="col-lg-4 col-md-6">
                         <div class="card mb-4 shadow rounded">
-                            <img class="card-img-top" src="../images/ikfLogo.png">
+                            <img class="card-img-top" src="../images/testImg.jpg">
                             <div class="card-body text-center">
                                 <p class="h5">Chandigarh-Shimla-Kufri</p>
                                 <p class="card-text">4 Days Starting From ₹12000 4 Days - Etios/Dzire ₹12000 | Innova ₹16000 | Crysta ₹18000 | Tempo Traveller ₹20000 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="#" onclick="alert('This will allow user to book the package.')" class="btn btn-sm btn-outline-danger">Book Now</a>
-                                        <a href="#" onclick="alert('This will allow user to see details of package.')" class="btn btn-sm btn-outline-warning">Details</a>
+                                        <a href="#" onclick="alert('This will allow user to book the package.')" class="btn btn btn-outline-danger">Book Now</a>
+                                        <a href="#" onclick="alert('This will allow user to see details of package.')" class="btn btn btn-outline-dark">Details</a>
                                     </div>
                                     <small class="text-muted"></small>
                                 </div>
@@ -85,8 +85,8 @@ if ($_SESSION['logged'] != 'true') {
 
     
     <!-- Package form starts here -->
-    <section class="p-5 lead">
-        <div class="container shadow p-5 rounded text-center">
+    <section class="p-3 lead">
+        <div class="container shadow p-3 rounded text-center">
             <form method="POST" action="../include/package.php" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="file">Image</label>

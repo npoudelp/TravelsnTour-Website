@@ -25,16 +25,16 @@
                     <div class="container">
                         <ul class="navbar-nav lead">
                             <li class="nav-item">
-                                <a href="#" class="nav-link ">Tour Package</a>
+                                <a href="./package.php" class="nav-link ">Tour Package</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Taxi Service</a>
+                                <a href="./taxi.php" class="nav-link">Taxi Service</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">About Us</a>
+                                <a href="about.php" class="nav-link">About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Contact Us</a>
+                                <a href="contact.php" class="nav-link">Contact Us</a>
                             </li>
                         </ul>
                     </div>

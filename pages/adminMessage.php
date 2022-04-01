@@ -19,6 +19,7 @@ $result = mysqli_query($conn, $sql);
 
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jQuery.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 </head>
@@ -69,19 +70,35 @@ $result = mysqli_query($conn, $sql);
                         echo '<div class="col-lg-4 col-md-6">
                         <div class="card mb-4 shadow rounded">
                             <div class="card-body">
-                                <h5 class="card-title">' . $row["name"] . '</h5>
+                                <div class="row">
+                                    <div class="col">
+                                    <h5 class="card-title">' . $row["name"] . '</h5>
+                                    </div>
+                                    <div class="col d-flex justify-content-end">
+                                    ';
+                        if ($row['checked'] == '0') {
+                            echo '<i onclick="checkMess(' . $row["messageId"] . ')" class="bi bi-check2 btn mx-3 btn-outline-dark"></i>';
+                        }
+                        if ($row['checked'] == '1') {
+                            echo '<i class="bi bi-check2 mx-3 btn btn-primary"></i>';
+                        }
+                        echo '<i onclick="deleteMess(' . $row["messageId"] . ')" class="bi mx-3 bi-x-lg btn btn-outline-danger"></i>
+                                    </div>
+                                </div>
                                 <h6 class="card-subtitle mb-2 text-muted border-bottom">' . $row["phone"] . '</h6>
                                 <p class="card-text">' . $row["message"] . '</p>
                                 ';
 
-                                if($row["callBack"] == '1'){
-                                    echo '<a href="tel:'.$row['phone'].'" class="btn btn-outline-warning"><i class="bi bi-telephone-fill"></i> &nbsp; Wants a call back</a>';
-                                }
+                        if ($row["callBack"] == '1') {
+                            echo '<a href="tel:' . $row['phone'] . '" class="btn btn-outline-warning"><i class="bi bi-telephone-fill"></i> &nbsp; Wants a call back</a>';
+                        }
 
                         echo '</div>
                         </div>
                     </div>';
                     }
+                }else{
+                    echo '<div class="container text-center"><h1 class="card-title">No Message To Display</h1></div>';
                 }
 
                 ?>
@@ -93,6 +110,22 @@ $result = mysqli_query($conn, $sql);
     <?php
     include_once('../include/footer.php');
     ?>
+
+    <script>
+        deleteMess = (messId) => {
+            $warn = "Do you really want to delete the message?";
+            if (confirm($warn) == true) {
+                window.location.href = "../include/deleteMessage.php?q=" + messId;
+            }
+        }
+
+        checkMess = (messId) => {
+            $warn = "Did you read the message?";
+            if (confirm($warn) == true) {
+                window.location.href = "../include/updateMessage.php?q=" + messId;
+            }
+        }
+    </script>
 </body>
 
 </html>

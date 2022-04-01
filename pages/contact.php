@@ -50,8 +50,8 @@
     <!-- Navbar ends here -->
 
         <!-- Contact starts here -->
-        <section class="p-5 lead">
-            <div class="container shadow p-5 rounded text-center">
+        <section class="p-3 lead">
+            <div class="container shadow p-3 rounded text-center">
                 <form method="POST" action="../include/message.php">
                     <div class="form-group">
                         <label for="name">Name</label>

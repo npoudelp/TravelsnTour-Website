@@ -14,11 +14,13 @@ if(isset($_POST['submit'])){
                 $_SESSION['logged'] = 'true';
                 $_SESSION['userName'] = $row['userName'];
                 $_SESSION['email'] = $row['email'];
-                header('location: ../pages/admin.php');
+                header('location: ../pages/adminMessage.php');
+            }else{
+                header('location:../pages/login.php?incorrect_details');
             }
         }
     }else{
-        header('location:../pages/login.php?error_login');
+        header('location:../pages/login.php?incorrect_details');
     }
 }else{
     header('location:../pages/login.php');

@@ -85,7 +85,7 @@ $result = mysqli_query($conn, $sql);
                     }
                     ?>
                 </div>
-            </div>
+            </div> 
         </div>
         <!-- package display ends here -->
 
