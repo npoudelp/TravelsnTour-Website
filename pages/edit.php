@@ -3,10 +3,28 @@ session_start();
 if ($_SESSION['logged'] != 'true') {
     header('location:./login.php');
 }
+$pid = "";
+$msg = "";
+$location = "";
+$details = "";
+$image = "";
+if (isset($_REQUEST['pid'])) {
+    $pid = $_REQUEST['pid'];
+}
 include_once("../include/dbConn.php");
-$sql = "SELECT * FROM package ORDER BY PID DESC;";
+$sql = "SELECT * FROM package WHERE pid='$pid';";
 $result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $location = $row['location'];
+        $details = $row['details'];
+        $image = $row['image'];
+    }
+} else {
+    $error =  '<span class="lead text-danger">Error to det desired package, please re login and try again</span>';
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +79,32 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
     <!-- Navbar ends here -->
+    <?php
+    echo $error;
+    ?>
+    <br>
+    <div class="container">
+        <form method="POST" action="../include/editPackage.php">
+            <input type="hidden" name="pid" value="<?php echo $pid; ?>">
 
+            <?php
+
+            echo '<div class="col-lg-4 col-md-6">
+<div class="card mb-4 shadow rounded">
+    <img class="card-img-top" height="250px" width="100%" src="' . $image . '">
+    <div class="card-body text-center">
+    <input type="text" class="form-control" name="location" value=' . $location . ' id="name" placeholder="Location"><br>
+    <input type="text" class="form-control" name="details" value=' . $details . ' id="name" placeholder="Details">
+
+    </div>
+</div>
+</div>';
+
+
+            ?>
+            <button type="submit" name="submit" class="btn btn-outline-danger">Edit</button>
+        </form>
+    </div>
 
     <!-- package display starts here -->
 
@@ -69,40 +112,7 @@ $result = mysqli_query($conn, $sql);
         <div class="album py-3">
             <div class="container ">
                 <div class="row">
-                    <?php
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<div class="col-lg-4 col-md-6">
-                                    <div class="card mb-4 shadow rounded">
-                                        <img class="card-img-top" height="250px" width="100%" src="' . $row["image"] . '">
-                                        <div class="card-body text-center">
-                                            <p class="h5">' . $row["location"] . '</p>
-                                            <p class="card-text">' . $row["details"] . '</p>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <button onclick="delPackage(\'' . $row['pid'] . '", "' . $row['image'] . '\')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <a href="./edit.php?pid=' . $row['pid'] . '" class="btn btn-primary"><i class="bi bi-pencil"></i></a>
-                                                </div>
-                                                <div class="col-md-3">
-                                                ';
-                            if ($row['active'] == '0') {
-                                echo '<a href="../include/changeStatus.php?pid=' . $row['pid'] . '&r=0" class="btn btn-danger">Deactive</a>';
-                            }
-                            if ($row['active'] == '1') {
-                                echo '<a href="../include/changeStatus.php?pid=' . $row['pid'] . '&r=1" class="btn btn-success">Active</a>';
-                            }
-                            echo '
-                                                </div>
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                </div>';
-                        }
-                    }
-                    ?>
                 </div>
             </div>
         </div>
@@ -111,15 +121,6 @@ $result = mysqli_query($conn, $sql);
         <?php
         include_once('../include/footer.php');
         ?>
-
-        <script>
-            delPackage = (packId, image) => {
-                let warn = "Do you really want to delete the package?";
-                if (confirm($warn) == true) {
-                    window.location.href = "../include/deletePackage.php?q=" + packId + "&q" + image;
-                }
-            }
-        </script>
 </body>
 
 </html>

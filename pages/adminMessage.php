@@ -1,10 +1,13 @@
 <?php
+ini_set("display_errors", "1");
+error_reporting(E_ALL);
+
 session_start();
 if ($_SESSION['logged'] != 'true') {
     header('location:./login.php');
 }
 include_once("../include/dbConn.php");
-$sql = "SELECT * FROM message ORDER BY messageId DESC;";
+$sql = "SELECT * FROM message ORDER BY mid DESC;";
 $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -77,12 +80,12 @@ $result = mysqli_query($conn, $sql);
                                     <div class="col d-flex justify-content-end">
                                     ';
                         if ($row['checked'] == '0') {
-                            echo '<i onclick="checkMess(' . $row["messageId"] . ')" class="bi bi-check2 btn mx-3 btn-outline-dark"></i>';
+                            echo '<i onclick="checkMess(' . $row["mid"] . ')" class="bi bi-check2 btn mx-3 btn-outline-dark"></i>';
                         }
                         if ($row['checked'] == '1') {
                             echo '<i class="bi bi-check2 mx-3 btn btn-primary"></i>';
                         }
-                        echo '<i onclick="deleteMess(' . $row["messageId"] . ')" class="bi mx-3 bi-x-lg btn btn-outline-danger"></i>
+                        echo '<i onclick="deleteMess(' . $row["mid"] . ')" class="bi mx-3 bi-x-lg btn btn-outline-danger"></i>
                                     </div>
                                 </div>
                                 <h6 class="card-subtitle mb-2 text-muted border-bottom">' . $row["phone"] . '</h6>
@@ -97,7 +100,7 @@ $result = mysqli_query($conn, $sql);
                         </div>
                     </div>';
                     }
-                }else{
+                } else {
                     echo '<div class="container text-center"><h1 class="card-title">No Message To Display</h1></div>';
                 }
 

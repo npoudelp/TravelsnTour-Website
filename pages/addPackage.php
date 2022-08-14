@@ -1,8 +1,10 @@
 <?php
+
 session_start();
 if ($_SESSION['logged'] != 'true') {
     header('location:./login.php');
-} ?>
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,14 +85,14 @@ if ($_SESSION['logged'] != 'true') {
     </section>
     <!-- Tour package ends here -->
 
-    
+
     <!-- Package form starts here -->
     <section class="p-3 lead">
         <div class="container shadow p-3 rounded text-center">
             <form method="POST" action="../include/package.php" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="file">Image</label>
-                    <input type="file" class="form-control" required name="file" id="file" >
+                    <input type="file" class="form-control" required name="file" id="file">
                 </div><br>
                 <div class="form-group">
                     <label for="location">Location</label>
@@ -99,6 +101,9 @@ if ($_SESSION['logged'] != 'true') {
                 <div class="form-group">
                     <label for="message">Details</label>
                     <textarea type="text" class="form-control" required name="details" id="details" placeholder="Detail pricing and description for package"></textarea>
+                </div><br>
+                <div class="form-group">
+                    <input type="checkbox" name="active" id="checkbox" value="1">&nbsp; Active Now </input>
                 </div><br>
 
                 <button type="submit" name="submit" class="btn btn-outline-warning">Submit</button>

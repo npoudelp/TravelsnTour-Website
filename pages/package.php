@@ -1,6 +1,6 @@
 <?php
 include_once("../include/dbConn.php");
-$sql = "SELECT * FROM package ORDER BY packageId DESC;";
+$sql = "SELECT * FROM package WHERE active='1' ORDER BY pid DESC;";
 $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -82,6 +82,8 @@ $result = mysqli_query($conn, $sql);
                                     </div>
                                 </div>';
                         }
+                    }else{
+                        echo '<span class="text-danger lead">No Packages Available</span>';
                     }
                     ?>
                 </div>
