@@ -8,7 +8,7 @@ if (isset($_REQUEST['q'])) {
 
     include_once("./dbConn.php");
 
-    $sql = "UPDATE message SET checked = '1' WHERE messageId = '{$messId}';";
+    $sql = "UPDATE message SET checked = '1' WHERE mid = '{$messId}';";
 
     $result = mysqli_query($conn, $sql);
     if ($result) {

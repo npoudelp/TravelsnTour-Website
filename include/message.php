@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<script src="../js/bootstrap.min.js"></script>
 <?php
 if(isset($_POST['submit'])){
     $name = $_POST['name'];
@@ -12,13 +10,13 @@ if(isset($_POST['submit'])){
     }
 
     include_once("../include/dbConn.php");
-    $sql = "INSERT INTO message (name, phone, message, callBack) VALUES ('{$name}', '{$phone}', '{$message}', '{$check}');";
+    $sql = "INSERT INTO message (name, phone, message, callBack, checked) VALUES ('{$name}', '{$phone}', '{$message}','{$check}', '0');";
     $result = mysqli_query($conn, $sql);
     if($result){
-        echo '<span class="display-1">Message Sent<br><a href="../index.php" class="display-1 text-decoration-none btn btn-outline-danger">Go To Home</a></span>';
+        header('location: ../pages/contact.php?msg=success');
     }
     else{
-        echo "Error sending message" ;
+        header('location: ../pages/contact.php?msg=success');
     }
 }else{
     header("location:../pages/contact.php");

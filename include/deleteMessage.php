@@ -8,7 +8,7 @@ if (isset($_REQUEST['q'])) {
 
     include_once("./dbConn.php");
 
-    $sql = "DELETE FROM message WHERE messageId = '{$messId}';";
+    $sql = "DELETE FROM message WHERE mid = '{$messId}';";
 
     $result = mysqli_query($conn, $sql);
     if ($result) {
