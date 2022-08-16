@@ -31,7 +31,7 @@ $result = mysqli_query($conn, $sql);
     <!-- Navbar starts here -->
     <div class="nav navbar navbar-expand-lg bg-dark navbar-dark py-3">
         <div class="container">
-            <a href="../index.php" class="navbar-brand"><span class="text-light h2">Ashok Tour <span class="text-warning h1 logo">'n'</span> Travels</span></a>
+            <a href="./adminMessage.php" class="navbar-brand"><span class="text-light h2">Ashok Tour <span class="text-warning h1 logo">'n'</span> Travels</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
                 <i class="bi bi-grid-3x3-gap"></i>
             </button>
@@ -46,7 +46,7 @@ $result = mysqli_query($conn, $sql);
                                 <a href="#" class="nav-link">Taxi Services</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Reviews</a>
+                                <a href="./adminReview.php" class="nav-link">Reviews</a>
                             </li>
                             <li class="nav-item">
                                 <a href="./adminMessage.php" class="nav-link active">Messages</a>

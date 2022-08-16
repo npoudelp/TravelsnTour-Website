@@ -74,20 +74,20 @@ $result = mysqli_query($conn, $sql);
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
                                                     <a href="tel:+919815374668" class="btn btn btn-outline-warning">Book Now</a>
-                                                    <a href="#" class="btn btn btn-outline-dark">Details</a>
+                                                    <a href="tel:+919815374668" class="btn btn btn-outline-dark">Call Now</a>
                                                 </div>
-                                                <small class="text-muted"></small>
+                                            
                                             </div>
                                         </div>
                                     </div>
                                 </div>';
                         }
-                    }else{
+                    } else {
                         echo '<span class="text-danger lead">No Packages Available</span>';
                     }
                     ?>
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- package display ends here -->
 

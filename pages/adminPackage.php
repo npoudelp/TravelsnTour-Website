@@ -28,7 +28,7 @@ $result = mysqli_query($conn, $sql);
     <!-- Navbar starts here -->
     <div class="nav navbar navbar-expand-lg bg-dark navbar-dark py-3">
         <div class="container">
-            <a href="../index.php" class="navbar-brand"><span class="text-light h2">Ashok Tour <span class="text-warning h1 logo">'n'</span> Travels</span></a>
+            <a href="./adminMessage.php" class="navbar-brand"><span class="text-light h2">Ashok Tour <span class="text-warning h1 logo">'n'</span> Travels</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
                 <i class="bi bi-grid-3x3-gap"></i>
             </button>
@@ -43,7 +43,7 @@ $result = mysqli_query($conn, $sql);
                                 <a href="#" class="nav-link">Taxi Services</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Reviews</a>
+                                <a href="./adminReview.php" class="nav-link">Reviews</a>
                             </li>
                             <li class="nav-item">
                                 <a href="./adminMessage.php" class="nav-link">Messages</a>
@@ -79,13 +79,13 @@ $result = mysqli_query($conn, $sql);
                                             <p class="h5">' . $row["location"] . '</p>
                                             <p class="card-text">' . $row["details"] . '</p>
                                             <div class="row">
-                                                <div class="col-md-3">
-                                                    <button onclick="delPackage(\'' . $row['pid'] . '", "' . $row['image'] . '\')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                <div class="col-3">
+                                                    <a href="../include/deletePackage.php?q=' . $row['pid'] . ')" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-3">
                                                    <a href="./edit.php?pid=' . $row['pid'] . '" class="btn btn-primary"><i class="bi bi-pencil"></i></a>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-3">
                                                 ';
                             if ($row['active'] == '0') {
                                 echo '<a href="../include/changeStatus.php?pid=' . $row['pid'] . '&r=0" class="btn btn-danger">Deactive</a>';
@@ -113,10 +113,10 @@ $result = mysqli_query($conn, $sql);
         ?>
 
         <script>
-            delPackage = (packId, image) => {
+            delPackage = (packId) => {
                 let warn = "Do you really want to delete the package?";
                 if (confirm($warn) == true) {
-                    window.location.href = "../include/deletePackage.php?q=" + packId + "&q" + image;
+                    window.location.href = "../include/deletePackage.php?q=" + packId ;
                 }
             }
         </script>
