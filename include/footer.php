@@ -29,6 +29,7 @@
             <div class="col-lg p-3 text-center">
                 <i class="bi bi-person-check h3"></i> &nbsp; <span class="h3 text-light">Follow Us</span>
                 <a class="nav-link text-white border-top px-3 py-1 border-secondary" href="https://www.facebook.com/Ashok-Tour-Travels-105122087549206/"><i class="bi bi-facebook text-primary"></i> Facebook</a>
+                <p class="lead text-center py-1"><a href="./giveReview.php" class="btn btn-outline-warning btn-small">Leave your review here </a> </p>
                 <!-- <a class="nav-link text-white border-top px-3 py-1 border-secondary" href="#">instagram</a>
                 <a class="nav-link text-white border-top px-3 py-1 border-secondary" href="#">twitter</a>
                 <a class="nav-link text-white border-top px-3 py-1 border-secondary" href="#">linkedin</a> -->
